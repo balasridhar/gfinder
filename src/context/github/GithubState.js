@@ -35,18 +35,20 @@ const GithubState = (props) => {
   // Search Users
   const searchUsers = async (text) => {
     setLoading();
-    let res = null;
-    if (text === '') {
-      res = await axios.get(
+    let data = null;
+    if (text === null) {
+      let res = await axios.get(
         `https://api.github.com/users?client_id=${githubClientId}&client_secret=${githubClientSecret}`
       );
+      data = res.data;
     } else {
-      res = await axios.get(
+      let res = await axios.get(
         `https://api.github.com/search/users?q=${text}&client_id=${githubClientId}&client_secret=${githubClientSecret}`
       );
+      data = res.data.items;
     }
 
-    dispatch({ type: SEARCH_USERS, payload: res.data.items });
+    dispatch({ type: SEARCH_USERS, payload: data });
   };
 
   // Get User

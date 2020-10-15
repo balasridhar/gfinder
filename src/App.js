@@ -12,12 +12,6 @@ import AlertState from './context/alert/AlertState';
 import './App.css';
 
 const App = () => {
-  // EMpty set of brackets is for componentdidmount.
-  // useEffect(() => {
-  //   githubContext.searchUsers('');
-  //   // eslint-disable-next-line
-  // }, []);
-
   return (
     <GithubState>
       <AlertState>
